@@ -1,0 +1,126 @@
+@use "sass:color";
+@use "./settings" as s;
+
+.product-list {
+  padding: (s.$base-size * 3) 0;
+}
+
+.product {
+  margin: (s.$base-size * 0.5) 0;
+  padding: (s.$base-size * 6) (s.$base-size * 4);
+  background: s.$color-light;
+  border-bottom: 1px solid color.adjust(s.$color-dark, $lightness: 70%);
+  border-radius: s.$radius;
+
+  &__header {
+    @include s.flex(row, center, space-between);
+    margin-bottom: (s.$base-size * 2);
+    font-family: s.$font-header;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  &__name {
+    position: relative;
+    margin: 0;
+    font-weight: s.$font-semibold;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    position: absolute;
+    color: s.$color-main;
+    right: (-(s.$base-size) * 5);
+    top: s.$base-size;
+    font-size: (s.$base-size * 1.5);
+    transition: s.$transition;
+  }
+
+  &__base-price {
+    font-weight: s.$font-light;
+  }
+
+  &__description {
+    color: color.adjust(s.$color-dark, $lightness: 10%);
+  }
+
+  &__wrapper {
+    @include s.flex(row, center, space-between);
+    @include s.accordion-closed();
+    animation: flipdown 0.5s ease both;
+  }
+
+  &__params {
+    margin: 0 0 (s.$base-size * 3) 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__params-title {
+    font-size: 14px;
+    font-weight: s.$font-bold;
+    text-transform: uppercase;
+    margin: (s.$base-size * 2) 0;
+  }
+
+  &__order {
+    width: calc(100% - 400px);
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+
+  &__total-price {
+    font-size: 14px;
+    font-weight: s.$font-bold;
+    text-transform: uppercase;
+  }
+
+  &__images {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    opacity: 0;
+    transition: opacity 200ms;
+
+    &.small {
+      width: 220px;
+      height: 220px;
+    }
+
+    > img {
+      @include s.center();
+      height: auto;
+      opacity: 0;
+      transition: opacity 500ms;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.active {
+    .product__wrapper {
+      @include s.accordion-open();
+    }
+
+    .product__order,
+    .product__images {
+      opacity: 1;
+    }
+
+    .product__icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.widget-amount {
+  input {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin: 0 (s.$base-size * 0.5);
+    padding: 0;
+  }
+}

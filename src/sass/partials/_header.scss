@@ -1,0 +1,35 @@
+@use "./settings" as s;
+
+.header {
+  padding: (s.$base-size * 5) 0;
+  background: s.$color-dark;
+  color: s.$color-light;
+
+  &__wrapper {
+    position: relative;
+  }
+}
+
+.logo {
+  display: inline-block;
+  line-height: 1;
+
+  &__title {
+    margin: 0 0 s.$base-size 0;
+    font-size: (s.$base-size * 4);
+    font-family: s.$font-header;
+    font-weight: s.$font-light;
+    text-transform: uppercase;
+
+    span {
+      font-weight: s.$font-bold;
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: (s.$base-size * 1.5);
+    font-weight: s.$font-light;
+    font-style: italic;
+  }
+}

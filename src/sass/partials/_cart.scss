@@ -1,0 +1,122 @@
+@use "sass:color";
+@use "./settings" as s;
+
+.cart {
+  position: absolute;
+  width: 270px;
+  right: 0;
+  top: s.$base-size;
+  padding: (s.$base-size) (s.$base-size * 1.5);
+  background: s.$color-light;
+  border-radius: s.$radius;
+  color: s.$color-main;
+  font-size: s.$base-size;
+  box-shadow: 0 0 s.$base-size rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+
+  &.active {
+    .cart__content {
+      @include s.accordion-open();
+      padding: (s.$base-size * 1.5) 0 0 0;
+    }
+  }
+
+  &__summary {
+    @include s.flex(row, center, space-between);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__icon {
+    font-size: (s.$base-size * 2);
+  }
+
+  &__total-number {
+    background: s.$color-main;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: s.$color-light;
+    text-align: center;
+    line-height: 28px;
+  }
+
+  &__total-price {
+    color: s.$color-dark;
+  }
+
+  &__content {
+    @include s.accordion-closed();
+    opacity: 0;
+    animation: flipdown 0.5s ease both;
+    color: s.$color-dark;
+  }
+
+  &__order-summary {
+    li {
+      @include s.flex(row, center, space-between);
+    }
+
+    .widget-amount {
+      @include s.flex(column-reverse, center, space-between);
+      margin: 0 s.$base-size 0 0;
+
+      input {
+        margin: 0;
+        width: (s.$base-size * 2);
+        height: (s.$base-size * 2);
+      }
+
+      &:hover .btn-quantity--lt {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__product-name {
+    width: 150px;
+  }
+
+  &__action-buttons {
+    @include s.flex(row, center, space-between);
+    font-size: 0;
+
+    i {
+      font-size: 14px;
+    }
+
+    li {
+      margin: 0 0 0 s.$base-size;
+    }
+
+    a {
+      color: s.$color-main;
+
+      &:hover {
+        color: color.adjust(s.$color-main, $lightness: 3%);
+      }
+    }
+  }
+
+  &__order-price {
+    margin: 0;
+    padding: s.$base-size 0;
+    list-style-type: none;
+    border-top: 1px solid color.adjust(s.$color-dark, $lightness: 70%);
+
+    li {
+      @include s.flex(row, center, space-between);
+    }
+  }
+
+  &__order-confirmation {
+    border-top: 1px solid color.adjust(s.$color-dark, $lightness: 70%);
+    padding: s.$base-size 0 0 0;
+
+    input,
+    button {
+      width: 100%;
+      margin-bottom: (s.$base-size * 0.5);
+    }
+  }
+}
