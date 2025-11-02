@@ -97,6 +97,9 @@
       thisProduct.priceElem = thisProduct.element.querySelector(
         select.menuProduct.priceElem
       );
+      thisProduct.imageWrapper = thisProduct.element.querySelector(
+        select.menuProduct.imageWrapper
+      );
     }
 
     initAccordion() {
@@ -157,6 +160,9 @@
           const option = param.options[optionId];
           const isDefault = option.default;
           const isSelected = selectedOptions.includes(optionId);
+          const optionImage = thisProduct.imageWrapper.querySelector(
+            `.${paramId}-${optionId}`
+          );
 
           if (isDefault && !isSelected) {
             price -= option.price;
@@ -164,6 +170,10 @@
 
           if (!isDefault && isSelected) {
             price += option.price;
+          }
+
+          if (optionImage) {
+            optionImage.classList.toggle("active", isSelected);
           }
         }
       }
