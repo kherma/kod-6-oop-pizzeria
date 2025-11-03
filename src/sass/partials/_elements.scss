@@ -36,6 +36,10 @@ select {
   border: 1px solid s.$color-dark;
   border-radius: s.$radius;
   padding: s.$base-size;
+
+  &.error {
+    border-color: s.$color-main;
+  }
 }
 
 .checkbox {

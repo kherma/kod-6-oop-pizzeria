@@ -3,7 +3,7 @@
 
 .cart {
   position: absolute;
-  width: 270px;
+  width: 300px;
   right: 0;
   top: s.$base-size;
   padding: (s.$base-size) (s.$base-size * 1.5);
@@ -73,8 +73,36 @@
     }
   }
 
-  &__product-name {
-    width: 150px;
+  &__product {
+    width: 170px;
+  }
+
+  &__product-header {
+    @include s.flex(row, center, space-between);
+  }
+
+  &__product-details {
+    li {
+      display: block;
+      margin: 0 0 calc(s.$base-size / 4) 0;
+      font-size: 10px;
+      color: color.adjust(s.$color-dark, $lightness: 40%);
+      text-transform: lowercase;
+      font-style: italic;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__product-details-label {
+    position: relative;
+    padding: 0 calc(s.$base-size / 2) 0 0;
+    font-weight: 700;
+
+    &::after {
+      position: absolute;
+      content: ":";
+    }
   }
 
   &__action-buttons {
@@ -99,7 +127,7 @@
   }
 
   &__order-price {
-    margin: 0;
+    margin: s.$base-size 0 0 0;
     padding: s.$base-size 0;
     list-style-type: none;
     border-top: 1px solid color.adjust(s.$color-dark, $lightness: 70%);
