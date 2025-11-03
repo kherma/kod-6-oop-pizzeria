@@ -64,8 +64,9 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
-      console.log("new Product", thisProduct);
+      // console.log("new Product", thisProduct);
     }
     renderInMenu() {
       const thisProduct = this;
@@ -99,6 +100,9 @@
       );
       thisProduct.imageWrapper = thisProduct.element.querySelector(
         select.menuProduct.imageWrapper
+      );
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(
+        select.menuProduct.amountWidget
       );
     }
 
@@ -178,7 +182,88 @@
         }
       }
 
+      // Multiply price by amount
+      price *= thisProduct.amountWidget.value;
+
       thisProduct.priceElem.innerHTML = price;
+    }
+    initAmountWidget() {
+      const thisProduct = this;
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener("updated", function () {
+        thisProduct.processOrder();
+      });
+    }
+  }
+
+  class AmountWidget {
+    constructor(element) {
+      const thisWidget = this;
+
+      thisWidget.getElements(element);
+      thisWidget.setValue(
+        thisWidget.input.value || settings.amountWidget.defaultValue
+      );
+      thisWidget.initActions();
+    }
+
+    getElements(element) {
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(
+        select.widgets.amount.input
+      );
+      thisWidget.linkDecrease = thisWidget.element.querySelector(
+        select.widgets.amount.linkDecrease
+      );
+      thisWidget.linkIncrease = thisWidget.element.querySelector(
+        select.widgets.amount.linkIncrease
+      );
+    }
+
+    setValue(value) {
+      const thisWidget = this;
+      const newValue = parseInt(value);
+      const inMinRange = newValue >= settings.amountWidget.defaultMin;
+      const inMaxRange = newValue <= settings.amountWidget.defaultMax;
+
+      if (
+        thisWidget.value !== newValue &&
+        !isNaN(newValue) &&
+        inMinRange &&
+        inMaxRange
+      ) {
+        thisWidget.value = newValue;
+      }
+
+      thisWidget.input.value = thisWidget.value;
+      thisWidget.announce();
+    }
+
+    initActions() {
+      const thisWidget = this;
+
+      thisWidget.input.addEventListener("change", function () {
+        thisWidget.setValue(thisWidget.input.value);
+      });
+
+      thisWidget.linkDecrease.addEventListener("click", function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value - 1);
+      });
+
+      thisWidget.linkIncrease.addEventListener("click", function (event) {
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value + 1);
+      });
+    }
+
+    announce() {
+      const thisWidget = this;
+
+      const event = new Event("updated");
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
@@ -197,11 +282,11 @@
 
     init: function () {
       const thisApp = this;
-      console.log("*** App starting ***");
-      console.log("thisApp:", thisApp);
-      console.log("classNames:", classNames);
-      console.log("settings:", settings);
-      console.log("templates:", templates);
+      // console.log("*** App starting ***");
+      // console.log("thisApp:", thisApp);
+      // console.log("classNames:", classNames);
+      // console.log("settings:", settings);
+      // console.log("templates:", templates);
 
       thisApp.initData();
       thisApp.initMenu();
