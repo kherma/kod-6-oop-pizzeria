@@ -369,6 +369,9 @@
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(
         select.cart.toggleTrigger
       );
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(
+        select.cart.productList
+      );
     }
 
     initActions() {
@@ -380,8 +383,11 @@
     }
 
     add(menuProduct) {
-      // const thisCart = this;
-      console.log("MenuProduct: ", menuProduct);
+      const thisCart = this;
+      const generatedHTML = templates.cartProduct(menuProduct);
+      thisCart.dom.productList.appendChild(
+        utils.createDOMFromHTML(generatedHTML)
+      );
     }
   }
 
