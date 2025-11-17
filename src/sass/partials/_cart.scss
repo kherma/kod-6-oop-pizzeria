@@ -1,5 +1,5 @@
-@use "sass:color";
-@use "./settings" as s;
+@use 'sass:color';
+@use './settings' as s;
 
 .cart {
   position: absolute;
@@ -101,7 +101,7 @@
 
     &::after {
       position: absolute;
-      content: ":";
+      content: ':';
     }
   }
 
