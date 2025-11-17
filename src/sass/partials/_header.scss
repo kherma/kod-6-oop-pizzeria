@@ -1,7 +1,9 @@
 @use './settings' as s;
+@use 'sass:color';
+@use './typography';
 
 .header {
-  padding: (s.$base-size * 5) 0;
+  padding: (s.$base-size * 5) 0 (s.$base-size * 8) 0;
   background: s.$color-dark;
   color: s.$color-light;
 
@@ -31,5 +33,27 @@
     font-size: (s.$base-size * 1.5);
     font-weight: s.$font-light;
     font-style: italic;
+  }
+}
+
+.main-nav {
+  position: absolute;
+  @include s.flex(row, flex-start, flex-start);
+  bottom: (s.$base-size * -8);
+
+  a {
+    @extend .h2;
+    color: s.$color-main;
+    text-decoration: none;
+    margin-right: (s.$base-size * 2);
+    text-align: center;
+    padding: s.$base-size (s.$base-size * 2);
+    background: color.adjust(s.$color-dark, $lightness: -5%);
+    border-top-left-radius: s.$radius;
+    border-top-right-radius: s.$radius;
+
+    &.active {
+      background: color.adjust(s.$color-dark, $lightness: 75%);
+    }
   }
 }

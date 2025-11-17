@@ -1,0 +1,20 @@
+@use './settings' as s;
+
+.h1 {
+  font-family: s.$font-header;
+  font-size: 26px;
+  font-weight: s.$font-semibold;
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-size: 14px;
+  font-weight: s.$font-bold;
+  text-transform: uppercase;
+}
+
+.h3 {
+  font-size: 12px;
+  font-weight: s.$font-bold;
+  text-transform: uppercase;
+}

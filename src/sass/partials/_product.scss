@@ -1,12 +1,13 @@
 @use 'sass:color';
 @use './settings' as s;
+@use './typography';
 
 .product-list {
   padding: (s.$base-size * 3) 0;
 }
 
 .product {
-  margin: (s.$base-size * 0.5) 0;
+  margin: (s.$base-size * 2) 0;
   padding: (s.$base-size * 6) (s.$base-size * 4);
   background: s.$color-light;
   border-bottom: 1px solid color.adjust(s.$color-dark, $lightness: 70%);
@@ -15,16 +16,12 @@
   &__header {
     @include s.flex(row, center, space-between);
     margin-bottom: (s.$base-size * 2);
-    font-family: s.$font-header;
-    font-size: 22px;
     cursor: pointer;
   }
 
   &__name {
+    @extend .h1;
     position: relative;
-    margin: 0;
-    font-weight: s.$font-semibold;
-    text-transform: uppercase;
   }
 
   &__icon {
@@ -37,6 +34,7 @@
   }
 
   &__base-price {
+    @extend .h1;
     font-weight: s.$font-light;
   }
 
@@ -57,9 +55,7 @@
   }
 
   &__params-title {
-    font-size: 14px;
-    font-weight: s.$font-bold;
-    text-transform: uppercase;
+    @extend .h2;
     margin: (s.$base-size * 2) 0;
   }
 
