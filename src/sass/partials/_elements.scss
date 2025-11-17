@@ -1,5 +1,5 @@
 /* Buttons */
-@use "./settings" as s;
+@use './settings' as s;
 
 .btn-primary {
   @include s.btn(s.$color-dark, s.$color-light, s.$color-dark);
@@ -71,7 +71,7 @@ select {
     border-radius: s.$radius;
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       display: none;
       width: 9px;
