@@ -192,6 +192,12 @@
         opacity: 0.4;
       }
     }
+
+    &.selected {
+      background-color: s.$color-info;
+      border: 5px solid #fff;
+      box-shadow: 3px 3px 10px #000;
+    }
   }
 
   [data-table='1'] {

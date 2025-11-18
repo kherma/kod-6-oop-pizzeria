@@ -3,12 +3,14 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    alertMessage: '#template-alert-message',
   },
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    alert: '#alert',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -62,6 +64,11 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    floor: '.floor-plan',
+    form: '.booking-form',
+    starters: 'input[name="starter"]',
+    phone: '[name="phone"]',
+    address: '[name="address"]',
   },
   nav: {
     links: '.main-nav a',
@@ -79,6 +86,8 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    table: 'table',
+    selected: 'selected',
   },
   nav: {
     active: 'active',
@@ -118,6 +127,21 @@ export const settings = {
   booking: {
     tableIdAttribute: 'data-table',
   },
+  alert: {
+    types: {
+      warning: 'warning',
+      danger: 'danger',
+      success: 'success',
+      info: 'info',
+    },
+    messages: {
+      tableUnavailable: 'This table is unavailable',
+      reservationConfirmed: 'Reservation has been confirmed',
+    },
+    ids: {
+      tableUnavailable: 'tableUnavailable',
+    },
+  },
 };
 
 export const templates = {
@@ -129,5 +153,8 @@ export const templates = {
   ),
   bookingWidget: Handlebars.compile(
     document.querySelector(select.templateOf.bookingWidget).innerHTML
+  ),
+  alertMessage: Handlebars.compile(
+    document.querySelector(select.templateOf.alertMessage).innerHTML
   ),
 };
