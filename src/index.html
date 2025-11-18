@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+  <div id="alert"></div>
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
@@ -53,8 +53,8 @@
                 </li>
               </ul>
               <div class="cart__order-confirmation">
-                <input type="tel" name="phone" placeholder="Your phone">
-                <input type="text" name="address" placeholder="Your address">
+                <input type="tel" name="phone" placeholder="Your phone" required>
+                <input type="text" name="address" placeholder="Your address" required>
                 <button type="submit" class="btn-secondary">Order</button>
               </div>
             </form>
@@ -180,6 +180,15 @@
       </article> <!-- .product -->
     </script>
 
+
+
+  <script id="template-alert-message" type="text/x-handlebars-template">
+      <div class="message message--{{ type }}" data-message-id="{{ id }}">
+        <p class="message__text">{{ text }}</p>
+        <button class="message__btn">&times;</button>
+      </div>
+  </script>
+
   <script id="template-booking-widget" type="text/x-handlebars-template">
        <div class="booking-widget">
          <h2 class="page__title no-spacing">Book a table</h2>
@@ -238,8 +247,8 @@
              </div>
            </div>
            <div class="order-confirmation">
-             <input type="tel" name="phone" placeholder="Your phone">
-             <input type="text" name="address" placeholder="Your address">
+             <input type="tel" name="phone" placeholder="Your phone" required>
+             <input type="text" name="address" placeholder="Your address" required>
              <button type="submit" class="btn-secondary">Book table</button>
            </div>
          </form>

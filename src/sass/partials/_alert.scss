@@ -1,0 +1,79 @@
+/* stylelint-disable max-nesting-depth */
+@use 'settings' as s;
+
+$alert-colors: (
+  warning: s.$color-warning,
+  danger: s.$color-danger,
+  success: s.$color-success,
+  info: s.$color-info,
+);
+
+@keyframes emphasize {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.95);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#alert {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2147483647;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: s.$color-light;
+    border: 2px solid s.$color-dark;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform;
+
+    &__btn {
+      border: none;
+      background: s.$color-dark;
+      cursor: pointer;
+      font-size: 1.7rem;
+      color: s.$color-light;
+      width: 2.5rem;
+      aspect-ratio: 1 / 1;
+    }
+
+    &__text {
+      padding-inline: 1rem;
+      margin: 0;
+    }
+
+    @each $name, $color in $alert-colors {
+      &--#{$name} {
+        border-color: $color;
+
+        .message__btn {
+          background: $color;
+        }
+      }
+    }
+
+    &.emphasize {
+      animation-name: emphasize;
+      animation-duration: 1s;
+    }
+  }
+}
