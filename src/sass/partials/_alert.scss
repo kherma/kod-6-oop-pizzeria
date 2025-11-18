@@ -1,3 +1,4 @@
+/* stylelint-disable max-nesting-depth */
 @use 'settings' as s;
 
 $alert-colors: (
@@ -35,7 +36,7 @@ $alert-colors: (
   flex-direction: column;
   gap: 0.5rem;
 
-  & .message {
+  .message {
     display: flex;
     align-items: center;
     justify-content: space-between;
