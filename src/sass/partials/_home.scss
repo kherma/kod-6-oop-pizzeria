@@ -42,10 +42,80 @@
   }
 }
 
-.carousel {
-  margin-bottom: (s.$base-size * 6);
-  background-color: lightseagreen;
-  height: 270px;
+.slider {
+  margin: s.$base-size * 3 0;
+  overflow: hidden;
+  position: relative;
+  height: 18rem;
+
+  .slide {
+    transition: all 0.5s ease-in;
+    position: absolute;
+    display: flex;
+    top: 0;
+    width: 100%;
+    height: 14rem;
+
+    &--2 {
+      transform: translateX(100%);
+    }
+    &--3 {
+      transform: translateX(200%);
+    }
+
+    .slide-img {
+      flex: 1;
+      background: url('../images/assets/pizza-3.jpg') no-repeat center
+        center/cover;
+      padding: 2rem;
+      border-radius: 7px;
+    }
+
+    .slide-text {
+      flex: 2;
+      padding: 1rem 2rem;
+
+      .slide-title {
+        font-family: s.$font-header;
+        text-transform: uppercase;
+        font-weight: s.$font-normal;
+        color: s.$color-dark;
+      }
+
+      .slide-testimonials {
+        font-family: s.$font-text;
+        font-weight: s.$font-light;
+        color: s.$color-dark;
+      }
+
+      .slide-quote {
+        font-style: italic;
+      }
+    }
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      margin: 0 10px;
+      border-radius: 50%;
+      outline: none;
+      border: none;
+      background-color: s.$color-light-100;
+      cursor: pointer;
+
+      &--active {
+        background-color: s.$color-dark;
+      }
+    }
+  }
 }
 
 .gallery {
