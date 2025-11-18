@@ -4,6 +4,7 @@ export const select = {
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
     alertMessage: '#template-alert-message',
+    homeWidget: '#template-home-widget',
   },
   containerOf: {
     menu: '#product-list',
@@ -11,6 +12,8 @@ export const select = {
     pages: '#pages',
     booking: '.booking-wrapper',
     alert: '#alert',
+    home: '.home-wrapper',
+    mainNav: '.main-nav',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -156,5 +159,8 @@ export const templates = {
   ),
   alertMessage: Handlebars.compile(
     document.querySelector(select.templateOf.alertMessage).innerHTML
+  ),
+  homeWidget: Handlebars.compile(
+    document.querySelector(select.templateOf.homeWidget).innerHTML
   ),
 };

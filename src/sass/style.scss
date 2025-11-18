@@ -1,5 +1,5 @@
 @forward 'partials/_settings';
-@forward 'partials/typography';
+@forward 'partials/_typography';
 @forward 'partials/_global';
 @forward 'partials/_elements';
 
@@ -8,4 +8,5 @@
 @forward 'partials/_alert';
 
 @forward 'partials/_product';
-@forward 'partials/booking';
+@forward 'partials/_booking';
+@forward 'partials/_home';
