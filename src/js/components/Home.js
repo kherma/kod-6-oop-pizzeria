@@ -10,8 +10,12 @@ class Home {
   hideElements() {
     ['hashchange', 'load'].forEach((eventType) =>
       window.addEventListener(eventType, function () {
-        document.querySelector(select.containerOf.cart).style.display =
-          window.location.hash === '#/home' ? 'none' : '';
+        [select.containerOf.cart, select.containerOf.mainNav].forEach(
+          (selector) => {
+            document.querySelector(selector).style.display =
+              window.location.hash === '#/home' ? 'none' : '';
+          }
+        );
       })
     );
   }

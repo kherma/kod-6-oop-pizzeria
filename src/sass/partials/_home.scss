@@ -12,32 +12,33 @@
 .banner {
   margin-bottom: (s.$base-size * 6);
   display: grid;
-  grid-template-areas:
-    'order booking'
-    'hours hours';
+  grid-template-areas: 'order booking' 'hours hours';
 
-  .order-page {
-    grid-area: order;
-    background-color: lightcoral;
-    padding: (s.$base-size * 3);
-    border-radius: 5px;
-    margin: 3px;
+  .order-item {
+    background: url(../images/assets/pizza-1.jpg) no-repeat center center/cover;
+    @include s.banner-items-style(order);
+    @include s.banner-text-animation();
   }
 
-  .booking-page {
-    grid-area: booking;
-    background-color: lightgreen;
-    padding: (s.$base-size * 3);
-    border-radius: 5px;
-    margin: 3px;
+  .booking-item {
+    background: url(../images/assets/pizza-2.jpg) no-repeat center center/cover;
+    @include s.banner-items-style(booking);
+    @include s.banner-text-animation();
   }
 
-  .opening-hours {
-    grid-area: hours;
-    background-color: lightsalmon;
-    padding: (s.$base-size * 1.8);
-    border-radius: 5px;
-    margin: 3px;
+  .hours-item {
+    background-color: s.$color-main;
+    padding: s.$base-size * 2;
+    @include s.banner-items-style(hours);
+    flex-direction: column;
+
+    .item-text-main {
+      @include s.banner-hours-text(s.$font-header);
+    }
+
+    .item-text-sub {
+      @include s.banner-hours-text(s.$font-text);
+    }
   }
 }
 

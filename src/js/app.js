@@ -109,6 +109,15 @@ const app = {
     const thisApp = this;
     thisApp.homeElement = document.querySelector(select.containerOf.home);
     thisApp.booking = new Home(thisApp.homeElement);
+    const links = document.querySelectorAll('.banner-links');
+    links.forEach((link) => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const id = link.getAttribute('href').replace('#', '');
+        thisApp.activatePage(id);
+        window.location.hash = `#/${id}`;
+      });
+    });
   },
 
   init: function () {

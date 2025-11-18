@@ -261,17 +261,33 @@
 
   <script id="template-home-widget" type="text/x-handlebars-template">
       <div class="banner">
-        <div class="order-page">
-          <h2 class='h2'>Order Online</h2>
+        <!-- Order -->
+        <div class="order-item">
+          <a class="banner-links" href="#order">
+            <h2 class="item-title">Order Online</h2>
+            <div class="item-text-wrap">
+              <p class="item-text-category">Delicious food delivered to your door</p>
+            </div>
+          </a>
         </div>
-        <div class="booking-page">
-          <h2 class='h2'>Book a table</h2>
+
+        <!-- Booking -->
+        <div class="booking-item">
+          <a class="banner-links" href="#booking">
+            <h2 class="item-title">Book A Table</h2>
+            <div class="item-text-wrap">
+              <p class="item-text-category">Delicious food delivered to your door</p>
+            </div>
+          </a>
         </div>
-        <div class="opening-hours">
-          <h2 class="h2">Opening hours</h2>
-          <h3 class="h3">tue-sun, 12pm - 12am</h3>
+
+        <!-- hours -->
+        <div class="hours-item">
+          <h2 class="item-text-main">Opening hours:</h2>
+          <p class="item-text-sub">tue-sun, 12pm - 12am</p>
         </div>
       </div>
+      
       <div class="carousel"></div>
       <div class="gallery"></div>
   </script>

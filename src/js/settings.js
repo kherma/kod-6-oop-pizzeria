@@ -13,6 +13,7 @@ export const select = {
     booking: '.booking-wrapper',
     alert: '#alert',
     home: '.home-wrapper',
+    mainNav: '.main-nav',
   },
   all: {
     menuProducts: '#product-list > .product',
